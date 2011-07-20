@@ -1,0 +1,22 @@
+.CategoryFormField {
+	background-color: #eee;
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 2px;
+	padding-left: 6px;
+	padding-right: 6px;
+	margin-bottom: 1px;
+}
+.CategoryFormField a {
+	color: #ccc;
+	font-family: monospace;
+	text-decoration: none;
+	padding: 0;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.CategoryFormField a:hover {
+	background-color: #f00;
+	color: #fff;
+	text-decoration: none;
+}

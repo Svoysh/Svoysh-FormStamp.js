@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>FormStamp demo</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+</head>
+<body>
+<h1>FormStamp demo</h1>
+
+<h2>Contacts</h2>
+<div id="userForm-controls">
+	<a href="javascript:UserFormStamp.removeAll();"
+	   id="userForm-removeAllButton" style="display: none;">Remove all contacts</a>
+</div>
+<div id="userForm-block"></div>
+<div><a href="javascript:UserFormStamp.stamp(1);">Add contact...</a></div>
+
+<h2>Product categories</h2>
+<div id="categoryForm-controls">
+    <input type="button" onclick="CategoryFormStamp.stamp(1);" value="add"/>
+    <input type="button" onclick="CategoryFormStamp.stamp(5);" value="add 5"/>
+    <input type="button" id="categoryForm-removeAllButton"
+           onclick="CategoryFormStamp.removeAll();" value="remove all"/>
+</div>
+<div id="categoryForm-block">
+	<!-- Statically copied forms. -->
+    <div id="categoryForm-1" class="CategoryFormField">
+        <label for="categories_1_name">Category:
+        	<input id="categories_1_name" type="text" value="1" name="categories.name[1]"/>
+		</label>
+        <a href="javascript:CategoryFormStamp.remove(1)" title="Remove">x</a>
+    </div>
+    <div id="categoryForm-2" class="CategoryFormField">
+        <label for="categories_2_name">Category:
+        	<input id="categories_2_name" type="text" value="2" name="categories.name[2]"/>
+		</label>
+        <a href="javascript:CategoryFormStamp.remove(2)" title="Remove">x</a>
+    </div>
+    <div id="categoryForm-3" class="CategoryFormField">
+        <label for="categories_3_name">Category:
+        	<input id="categories_3_name" type="text" value="3" name="categories.name[3]"/>
+		</label>
+        <a href="javascript:CategoryFormStamp.remove(3)" title="Remove">x</a>
+    </div>
+</div>
+
+<div id="formPatterns" style="display: none;">
+
+    <div id="userForm-pattern" class="FormPattern" style="display: none;">
+        <div id="userForm-%id%" style="display: none;">
+            <input type="text" name="persons.firstName[%id%]" value="First Name %id%"/>
+            <input type="text" name="persons.lastName[%id%]" value="Last Name %id%"/>
+			<select name="persons.gender[%id%]">
+				<option>-- choose gender --</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+			<input type="text" name="persons.phone[%id%]" value="+380 "/>
+            <a href="javascript:UserFormStamp.remove(%id%);">Remove</a>
+       </div>
+    </div>
+
+    <div id="categoryForm-pattern" class="FormPattern" style="display: none;">
+        <div id="categoryForm-%id%" class="CategoryFormField" style="display: none;">
+            <label for="categories_%id%_name">Category:
+            	<input type="text" id="categories_%id%_name" name="categories.name[%id%]" value="%id%"/>
+			</label>
+            <a href="javascript:CategoryFormStamp.remove(%id%)" title="Remove">x</a>
+       </div>
+    </div>
+
+</div>
+
+<script language="javascript" type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="../src/main/js/FormStamp.js"></script>
+<script language="javascript" type="text/javascript">
+    // Global vars.
+    var UserFormStamp;
+    var CategoryFormStamp;
+
+	// On DOM ready.
+	$(function() {
+        UserFormStamp = svoysh.newFormStamp("userForm");
+        CategoryFormStamp = svoysh.newFormStamp("categoryForm");
+
+		// Here we can stamp some number of forms on startup.
+//		UserFormStamp.stamp();
+	});
+</script>
+</body>
+</html>
